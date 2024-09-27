@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Mobile First Site</title>
+    <style>
+        /* Basic reset for spacing and fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            font-size: 16px;
+            padding: 20px;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: #fff;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (min-width: 600px) {
+            body {
+                padding: 40px;
+            }
+
+            header,
+            footer {
+                text-align: left;
+            }
+
+            nav ul li {
+                display: inline-block;
+            }
+
+            main {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to My Site</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Home</h2>
+            <p>This is the homepage of our simple, mobile-first website.</p>
+        </section>
+        <section id="services">
+            <h2>Services</h2>
+            <p>Details about the services we offer.</p>
+        </section>
+        <section id="about">
+            <h2>About</h2>
+            <p>Information about our company.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>How to contact us.</p>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright © Your Website 2021</p>
+    </footer>
+</body>
+
+</html>

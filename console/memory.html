@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Test Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Memory Performance Test</h1>
+    <button onclick="allocateMemory()">Allocate Large Memory</button>
+    <button onclick="triggerLeak()">Trigger Memory Leak</button>
+    <div id="output"></div>
+
+    <script>
+        function allocateMemory() {
+            let largeArray = new Array(10000000).fill('MemoryTest');
+            console.log('Allocated large memory');
+            document.getElementById('output').innerText = 'Allocated large memory block';
+        }
+
+        function triggerLeak() {
+            const leakContainer = document.getElementById('output');
+            function leakyFunction() {
+                const date = new Date();
+                leakContainer.innerText = 'Leak at ' + date.toISOString();
+            }
+            // Intentionally create a memory leak
+            setInterval(leakyFunction, 1000);
+        }
+    </script>
+</body>
+</html>

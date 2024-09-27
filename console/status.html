@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced HTTP Status Code Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTTP Status Code Tester</h1>
+    <button onclick="makeRequest('https://httpstat.us/200')">Test 200 OK</button>
+    <button onclick="makeRequest('https://httpstat.us/404')">Test 404 Not Found</button>
+    <button onclick="makeRequest('https://httpstat.us/500')">Test 500 Internal Server Error</button>
+    <div id="output" class="output"></div>
+
+    <script>
+        function makeRequest(url) {
+            fetch(url)
+                .then(response => {
+                    console.assert(response.status === 200, `Expected 200 OK, but got ${response.status} instead.`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('output').innerText = 'Success: Received data';
+                    console.log('Data:', data);
+                })
+                .catch(error => {
+                    document.getElementById('output').innerText = error.message;
+                    console.error('Request failed:', error);
+                });
+        }
+    </script>
+</body>
+</html>

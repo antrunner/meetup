@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Test Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Network and Performance Test Site</h1>
+    <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+    <button onclick="loadLargeImage()">Load Large Image</button>
+    <button onclick="fetchData()">Fetch Data</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function loadLargeImage() {
+            const img = new Image();
+            img.src = "https://via.placeholder.com/1200x800";
+            img.onload = function() {
+                document.body.appendChild(img);
+                console.log('Large image loaded!');
+            };
+            img.onerror = function() {
+                console.log('Failed to load large image.');
+            };
+        }
+
+        function fetchData() {
+            fetch('https://jsonplaceholder.typicode.com/posts/1')
+                .then(response => response.json())
+                .then(json => {
+                    console.log('Data fetched:', json);
+                    alert('Data fetched: ' + JSON.stringify(json));
+                })
+                .catch(error => console.log('Error fetching data:', error));
+        }
+    </script>
+</body>
+</html>
