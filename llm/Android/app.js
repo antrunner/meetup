@@ -2,26 +2,26 @@
 
 window.addEventListener('DOMContentLoaded', () => {
 
-  const toastEl = document.getElementById('app-toast');
+  const toast = document.getElementById('app-toast');
 
   async function showToast(msg, dur = 2800) {
-    toastEl.message = msg;
-    toastEl.duration = dur;
-    await toastEl.present();
+    toast.message = msg;
+    toast.duration = dur;
+    await toast.present();
   }
 
-  // ── Back button (⬅) ─────────────────────────
+  // ── System back button (⬅ in top bar) ─────
   document.getElementById('back-btn').addEventListener('click', () => {
     if (history.length > 1) history.back();
     else showToast('Nothing to go back to in this demo');
   });
 
-  // ── Save (bookmark icon) ─────────────────────
+  // ── Save cart ──────────────────────────────
   document.getElementById('save-btn').addEventListener('click', () => {
-    showToast('Cart saved — continue anytime');
+    showToast('Cart saved — continue shopping anytime');
   });
 
-  // ── Promo ─────────────────────────────────────
+  // ── Promo ───────────────────────────────────
   document.getElementById('promo-apply-btn').addEventListener('click', applyPromo);
   document.getElementById('promo-field').addEventListener('keydown', e => {
     if (e.key === 'Enter') applyPromo();
@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('promo-applied-list').classList.remove('hidden');
       document.getElementById('discount-row').classList.remove('hidden');
       document.getElementById('total-amount').textContent = '$150.29';
-      showToast('Promo applied — you saved $12.62 🎉');
+      showToast('Promo applied — you saved $12.62!');
     } else if (val) {
       showToast('Code not recognised. Try ACME20');
     }
@@ -50,28 +50,28 @@ window.addEventListener('DOMContentLoaded', () => {
     showToast('Promo removed');
   });
 
-  // ── Address ──────────────────────────────────
+  // ── Address ─────────────────────────────────
   document.getElementById('address-btn').addEventListener('click', () => {
     showToast('Address picker coming soon');
   });
 
-  // ── Payment ──────────────────────────────────
+  // ── Payment ─────────────────────────────────
   document.getElementById('pay-group').addEventListener('ionChange', e => {
     const labels = { visa: 'Visa ••4284', paypal: 'PayPal', gpay: 'Google Pay' };
     showToast((labels[e.detail.value] || e.detail.value) + ' selected');
   });
 
-  // ── FAB – Place Order ─────────────────────────
-  document.getElementById('place-order-btn').addEventListener('click', () => {
+  // ── FAB — Place Order ────────────────────────
+  document.getElementById('fab-order').addEventListener('click', () => {
     const total = document.getElementById('total-amount').textContent;
-    showToast(`Order placed! ${total} charged. Thank you 🙌`, 3500);
+    showToast(`Order placed! ${total} charged. Thank you!`, 3500);
   });
 
-  // ── Bottom nav tabs ───────────────────────────
+  // ── Bottom navigation ────────────────────────
   ['shop', 'bag', 'orders', 'account'].forEach(name => {
     document.getElementById('tab-' + name).addEventListener('click', function () {
-      document.querySelectorAll('ion-tab-button').forEach(b => b.classList.remove('tab-selected'));
-      this.classList.add('tab-selected');
+      document.querySelectorAll('ion-tab-button').forEach(b => b.classList.remove('tab-active'));
+      this.classList.add('tab-active');
       if (name !== 'bag') showToast(name.charAt(0).toUpperCase() + name.slice(1) + ' — coming soon');
     });
   });

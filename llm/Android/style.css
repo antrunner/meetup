@@ -1,69 +1,88 @@
-/* ── MD3 color tokens ──────────────────────── */
+/* ── MD3 tokens ───────────────────────────── */
 :root {
-  --ion-color-primary:         #6750A4;
-  --ion-color-primary-rgb:     103,80,164;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-shade:   #5b47a0;
-  --ion-color-primary-tint:    #7662ad;
-
-  --ion-color-secondary:       #625B71;
-  --ion-color-secondary-rgb:   98,91,113;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-shade: #56506b;
-  --ion-color-secondary-tint:  #726b7f;
-
-  --ion-color-success:         #386A20;
-  --ion-color-success-rgb:     56,106,32;
-  --ion-color-success-contrast: #ffffff;
-  --ion-color-success-shade:   #315d1c;
-  --ion-color-success-tint:    #4c7936;
-
-  --ion-background-color:      #F4EFF4;
-  --ion-item-background:       #FFFBFE;
-  --ion-toolbar-background:    #FFFBFE;
-  --ion-tab-bar-background:    #FFFBFE;
-  --ion-text-color:            #1C1B1F;
-  --ion-border-color:          #CAC4D0;
+  --md-primary:       #6750A4;
+  --md-on-primary:    #FFFFFF;
+  --md-surface:       #FFFBFE;
+  --md-surface-var:   #E7E0EC;
+  --md-on-surface:    #1C1B1F;
+  --md-success:       #386A20;
+  --md-success-bg:    #ECFBDF;
+  --md-error:         #B3261E;
 }
 
+/* ── Layout ───────────────────────────────── */
 ion-app {
   max-width: 430px;
   margin: 0 auto;
+  background: var(--md-surface);
 }
 
-/* ── Top app bar ───────────────────────────── */
+/* ── Top App Bar ──────────────────────────── */
 ion-toolbar {
-  --border-width: 0 0 1px 0;
-  --border-color: var(--ion-border-color);
-  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  --background: var(--md-surface);
+  --color:      var(--md-on-surface);
+  --border-width: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12);
 }
 
-/* ── Delivery banner ───────────────────────── */
+ion-toolbar ion-button {
+  --min-height: 48px;
+  --min-width:  48px;
+}
+
+ion-title {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: .0125em;
+}
+
+/* ── Delivery banner ──────────────────────── */
 .delivery-banner {
   display: block;
-  margin: 12px 16px 4px;
-  padding: 10px 14px;
+  margin: 12px 16px 0;
+  padding: 12px 16px;
   border-radius: 12px;
-  background: #EDF7ED;
-  color: #1B5E20;
+  background: var(--md-success-bg);
+  color: var(--md-success);
   font-size: 14px;
+  line-height: 1.4;
 }
 
-/* ── Order item thumbnail ──────────────────── */
+/* ── List headers (MD3 label-large) ──────── */
+ion-list-header {
+  padding-top: 20px;
+  --color: var(--md-primary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ── Card-style inset lists ───────────────── */
+ion-list[inset] {
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+}
+
+/* ── Minimum 48dp touch targets ───────────── */
+ion-item {
+  --min-height: 56px;
+}
+
+/* ── Order item thumbnail ─────────────────── */
 .item-thumb {
   width: 48px;
   height: 48px;
   border-radius: 8px;
-  background: #E7E0EC;
+  background: var(--md-surface-var);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
   margin-right: 4px;
-  flex-shrink: 0;
 }
 
-/* ── Price column ──────────────────────────── */
+/* ── Price column ─────────────────────────── */
 .item-price-col {
   display: flex;
   flex-direction: column;
@@ -72,75 +91,109 @@ ion-toolbar {
   padding: 4px 0;
 }
 .item-price-col .price {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  color: var(--ion-text-color);
+  color: var(--md-on-surface);
 }
 
-/* ── Promo ─────────────────────────────────── */
+/* ── Promo ────────────────────────────────── */
 .hidden { display: none !important; }
 .promo-saving { font-size: 14px; font-weight: 500; }
 
-/* ── Payment icon ──────────────────────────── */
+ion-chip {
+  --background: var(--md-surface-var);
+  border-radius: 8px;
+}
+
+/* ── Payment icons ────────────────────────── */
 .pay-icon-wrap {
   width: 40px;
   height: 28px;
   border-radius: 4px;
-  border: 1px solid var(--ion-border-color);
-  background: #F4EFF4;
+  border: 1px solid var(--md-surface-var);
+  background: var(--md-surface);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 16px;
   margin-right: 4px;
-  flex-shrink: 0;
 }
+
 .gpay {
-  background: #000;
+  background: #4285F4;
   color: #fff;
   font-size: 13px;
   font-weight: 700;
   border: none;
-  font-style: italic;
+  font-family: 'Google Sans', sans-serif;
 }
 
-/* ── Total row ─────────────────────────────── */
-.total-row {
-  --min-height: 56px;
-  --border-color: var(--ion-border-color);
-  border-top: 1px solid var(--ion-border-color);
+/* ── Radio (MD3 filled) ───────────────────── */
+ion-radio {
+  --color-checked: var(--md-primary);
 }
+
+/* ── Total row ────────────────────────────── */
+.total-row { --min-height: 56px; }
 .total-amount {
   font-size: 18px !important;
   font-weight: 700;
+  color: var(--md-primary) !important;
 }
 
-/* ── FAB offset above tab bar ──────────────── */
-ion-fab[vertical="bottom"] {
-  bottom: calc(56px + 16px); /* tab-bar height + margin */
+/* ── FAB ──────────────────────────────────── */
+ion-fab {
+  margin: 0 16px 80px 0; /* above bottom nav */
 }
 
-/* ── Tab bar ────────────────────────────────── */
-ion-tab-bar {
-  --border: 1px solid var(--ion-border-color);
+ion-fab-button {
+  --background:       var(--md-primary);
+  --background-hover: #7965AF;
+  --background-activated: #5B4397;
+  --color:            var(--md-on-primary);
+  --border-radius:    16px;   /* MD3 FAB shape */
+  width: 56px;
   height: 56px;
-}
-.tab-selected {
-  color: var(--ion-color-primary) !important;
+  box-shadow: 0 3px 8px rgba(0,0,0,.2);
 }
 
-/* ── ion-list card style (MD3 surface) ─────── */
-ion-list {
-  background: var(--ion-item-background);
-  border-radius: 12px;
-  margin: 0 16px 4px;
-  overflow: hidden;
+/* ── Bottom navigation ────────────────────── */
+ion-tab-bar {
+  --background: var(--md-surface);
+  --border: 0;
+  box-shadow: 0 -1px 3px rgba(0,0,0,.1);
+  height: 64px;
 }
-ion-list-header {
-  padding: 20px 16px 4px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #49454F;
+
+ion-tab-button {
+  --color:         #49454F;
+  --color-selected: var(--md-primary);
+  min-height: 48px;
 }
+
+ion-tab-button.tab-active {
+  --color: var(--md-primary);
+}
+
+/* MD3 active indicator pill */
+ion-tab-button.tab-active ion-icon {
+  background: var(--md-surface-var);
+  border-radius: 16px;
+  padding: 4px 16px;
+}
+
+/* ── Snackbar toast ───────────────────────── */
+ion-toast.md-snackbar {
+  --background:   #323232;
+  --color:        #fff;
+  --border-radius: 4px;
+  --min-width:    200px;
+  --max-width:    344px;
+  --start:        16px;
+  --end:          16px;
+  --bottom:       80px;
+  font-size: 14px;
+}
+
+/* ── FAB spacer ───────────────────────────── */
+.fab-spacer { height: 88px; }
