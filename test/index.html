@@ -151,7 +151,49 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════
-     2. PAST vs NOW
+     2. WHAT IS A PROMPT
+══════════════════════════════════════════════════════ -->
+<section>
+<h2>What Is a Prompt?</h2>
+<div class="two-col">
+  <div class="col">
+    <h3>A prompt structured input for LLMs</h3>
+    <ul>
+      <li><em>System</em> - who the model is, its rules and constraints</li>
+      <li><em>Context</em> - the situation: platform, screen, state</li>
+      <li><em>Task</em> - what to do: write, test, fix, explain</li>
+      <li><em>Format</em> - how to respond: framework, style, length</li>
+    </ul>
+    <p style="margin-top:.35em">A well-structured prompt is <strong>deterministic input</strong> - same structure, same quality output.</p>
+    <div class="box bx-b" style="margin-top:.3em">
+      <p style="font-size:.58em;color:#93c5fd">Unlike a chat message, a prompt is <strong>versioned</strong>, <strong>reusable</strong>, and parameterised with context</p>
+    </div>
+  </div>
+  <div class="col-r">
+    <h3>Example</h3>
+    <pre><code class="language-markdown"># SYSTEM
+You are a senior mobile QA engineer.
+Assert behaviour only - no speculation.
+
+# CONTEXT
+App: Shop Screen: LoginForm
+Platform: iOS Safari  Viewport: 390px
+
+# TASK
+Write component tests for the login form.
+Cover: empty submit, invalid email, success.
+
+# FORMAT
+Vitest + RTL · one describe block
+fireEvent.touchEnd not click
+Fail loudly with clear messages.</code></pre>
+  </div>
+</div>
+<div class="ex-box"><span class="ex-label">Key insight: </span><code>the prompt is the spec - write it before asking the agent to generate anything</code></div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     2b. PAST vs NOW
 ══════════════════════════════════════════════════════ -->
 <section>
 <h2>Testing: Past vs Now</h2>
@@ -196,7 +238,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════
-     2b. WHAT IS AN AGENT
+     2d. WHAT IS AN AGENT
 ══════════════════════════════════════════════════════ -->
 <section>
 <h2>What Is an Agent?</h2>
@@ -289,7 +331,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════
-     2c. MORE CODE = MORE TESTING
+     2e. MORE CODE = MORE TESTING
 ══════════════════════════════════════════════════════ -->
 <section>
 <h2>More Generated Code - More Testing Matters</h2>
@@ -1315,6 +1357,29 @@ npm test
       <code>npm test → 6 tests · all green · pure JS · no DOM</code>
     </div>
   </div>
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     QUESTIONS
+══════════════════════════════════════════════════════ -->
+<section class="title-section">
+<div class="title-sl">
+  <h1 style="font-size:2.4em;margin-bottom:.6em">Questions?</h1>
+
+  <div class="fragment" style="margin:.4em 0;width:80%;text-align:left;background:#111;border:1px solid #1a2f1a;border-radius:6px;padding:.5em .9em">
+    <p style="font-size:.68em;color:#86efac;margin:0">What stops an agent from generating tests that always pass?</p>
+  </div>
+
+  <div class="fragment" style="margin:.4em 0;width:80%;text-align:left;background:#111;border:1px solid #1e3a5f;border-radius:6px;padding:.5em .9em">
+    <p style="font-size:.68em;color:#93c5fd;margin:0">If the agent writes the test and the code, who is accountable?</p>
+  </div>
+
+  <div class="fragment" style="margin:.4em 0;width:80%;text-align:left;background:#111;border:1px solid #2d1b4e;border-radius:6px;padding:.5em .9em">
+    <p style="font-size:.68em;color:#d8b4fe;margin:0">When does agents.md become the real codebase?</p>
+  </div>
+
+  <div class="meta" style="margin-top:1.2em">Mobile Web Meetup · 2026</div>
 </div>
 </section>
 
